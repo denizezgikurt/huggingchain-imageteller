@@ -3,6 +3,7 @@ from transformers import pipeline
 from langchain import PromptTemplate, LLMChain, OpenAI
 import requests
 import os
+import streamlit as st
 
 
 load_dotenv(find_dotenv())
@@ -23,7 +24,7 @@ img2text("photo.jpeg")
 def generate_story(scenario):
     template = """
     You are a storyteller;
-    You can generate a short story based on a simple narrative, the story should be no more than 50 words;
+    You can generate a short story based on a simple narrative, the story should be no more than 100 words;
     
     CONTEXT: {scenario}
     STORY:
@@ -47,7 +48,7 @@ story = generate_story(scenario)
 # text2speech
 def text2speech(message):
     API_URL = "https://api-inference.huggingface.co/models/espnet/kan-bayashi_ljspeech_vits"
-    headers = {"Authorization": "Bearer xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"}
+    headers = {"Authorization": f"Bearer {HUGGINGFACEHUB_API_TOKEN}"}
     payloads = {
         "inputs": message
     }
@@ -57,7 +58,31 @@ def text2speech(message):
         file.write(response.content)
 
 
-scenario = img2text("photo.jpeg")
-story = generate_story(scenario)
-text2speech(story)
+def main():
 
+    st.set_page_config(page_title="imageteller", page_icon="🤖")
+    
+    st.header("ImageTeller: Turn any image into a story")
+    uploaded_file = st.file_uploader("choose an image", type="jpg,png")
+
+    if uploaded_file is not None:
+        print(uploaded_file)
+        bytes_data = uploaded_file.getvalue()
+        with open(uploaded_file.name, "wb") as file:
+            file.write(bytes_data)
+        st.image(uploaded_file, caption='Uploaded Image.',
+                use_column_width=True)
+        scenario = img2text(uploaded_file.name)
+        story = generate_story(scenario)
+        text2speech(story)
+
+        with st.expander("scenario"):
+            st.write(scenario)
+        with st.expander("story"):
+            st.write(story)
+
+    st.audio("audio.flac")
+
+
+if __name__ == '__main__':
+    main()
