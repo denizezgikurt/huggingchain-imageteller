@@ -1,6 +1,7 @@
 from dotenv import find_dotenv, load_dotenv
 from transformers import pipeline
 from langchain import PromptTemplate, LLMChain, OpenAI
+from langchain.chat_models import ChatOpenAI
 import requests
 import os
 import streamlit as st
