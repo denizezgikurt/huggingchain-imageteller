@@ -7,7 +7,7 @@ import os
 import streamlit as st
 import sys
 
-sys.path.append('Users/dkurt02/miniconda3/lib/python3.10/site-packages/dotenv/__init__.py')
+sys.path.append('/Users/dkurt02/miniconda3/lib/python3.10/site-packages/dotenv/__init__.py')
 
 
 load_dotenv(find_dotenv())
