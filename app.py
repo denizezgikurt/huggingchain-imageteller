@@ -13,6 +13,9 @@ import streamlit as st
 load_dotenv(find_dotenv())
 HUGGINGFACEHUB_API_TOKEN = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 
+st.write("HUGGINGFACEHUB_API_TOKEN", st.secrets["HUGGINGFACEHUB_API_TOKEN"])
+st.write("OPENAI_API_KEY", st.secrets["OPENAI_API_KEY"])
+
 # img2text
 def img2text(url):
     image_to_text = pipeline("image-to-text", model="Salesforce/blip-image-captioning-large")
@@ -68,7 +71,7 @@ def main():
     st.set_page_config(page_title="imageteller", page_icon="🤖")
     
     st.header("ImageTeller: Turn any image into a story")
-    uploaded_file = st.file_uploader("choose an image", type="png")
+    uploaded_file = st.file_uploader("choose an image", type="jpg")
 
     if uploaded_file is not None:
         print(uploaded_file)
