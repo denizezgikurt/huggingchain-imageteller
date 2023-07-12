@@ -13,8 +13,8 @@ import streamlit as st
 load_dotenv(find_dotenv())
 HUGGINGFACEHUB_API_TOKEN = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 
-st.write("HUGGINGFACEHUB_API_TOKEN", st.secrets["HUGGINGFACEHUB_API_TOKEN"])
-st.write("OPENAI_API_KEY", st.secrets["OPENAI_API_KEY"])
+# st.write("HUGGINGFACEHUB_API_TOKEN", st.secrets["HUGGINGFACEHUB_API_TOKEN"])
+# st.write("OPENAI_API_KEY", st.secrets["OPENAI_API_KEY"])
 
 # img2text
 def img2text(url):
