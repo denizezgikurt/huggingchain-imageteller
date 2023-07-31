@@ -67,15 +67,15 @@ def text2speech(message):
 
 #UI Streamlit
 
-#add cache
-@st.cache_data
-def factorial(n):
-    if n < 1:
-        return 1
-    return n * factorial(n - 1)
+# #add cache
+# @st.cache_data
+# def factorial(n):
+#     if n < 1:
+#         return 1
+#     return n * factorial(n - 1)
 
-f10 = factorial(10)
-f9 = factorial(9)  # Returns instantly!
+# f10 = factorial(10)
+# f9 = factorial(9)  # Returns instantly!
 
 def main():
 
