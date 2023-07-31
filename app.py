@@ -68,7 +68,7 @@ def text2speech(message):
 #UI Streamlit
 
 #add cache
-@st.experimental_memo
+@st.cache_data
 def factorial(n):
     if n < 1:
         return 1
