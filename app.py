@@ -66,6 +66,17 @@ def text2speech(message):
 
 
 #UI Streamlit
+
+#add cache
+@st.experimental_memo
+def factorial(n):
+    if n < 1:
+        return 1
+    return n * factorial(n - 1)
+
+f10 = factorial(10)
+f9 = factorial(9)  # Returns instantly!
+
 def main():
 
     st.set_page_config(page_title="imageteller", page_icon="🤖")
