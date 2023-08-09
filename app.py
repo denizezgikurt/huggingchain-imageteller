@@ -82,7 +82,7 @@ def main():
     st.set_page_config(page_title="imageteller", page_icon="🤖")
     
     st.header("ImageTeller: Turn any image into a story")
-    uploaded_file = st.file_uploader("choose an image", type="jpg")
+    uploaded_file = st.file_uploader("choose an image", type="png")
 
     if uploaded_file is not None:
         print(uploaded_file)
